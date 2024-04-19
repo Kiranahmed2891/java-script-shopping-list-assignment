@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styles */
+    .delete-btn {
+      background-color: #dc3545; /* Red color for delete button */
+      color: white; /* White text color for delete button */
+      border: none; /* Remove border */
+      margin-left: 5px; /* Add margin for spacing */
+    }
+
+    .edit-btn {
+      background-color: #007bff; /* Blue color for edit button */
+      color: white; /* White text color for edit button */
+      border: none; /* Remove border */
+      margin-left: 5px; /* Add margin for spacing */
+    }
+  </style>
+</head>
+<body>
+  <h1>KIRAN AHMED JS1-024</h1>
+  <h1>shopping list assignments</h1>
+  <h1>mam SHAFAQ ANEES</h1>
+  <input type="text" id="inp" width="100%"><br>
+  <!-- <button onclick="foo()">Add</button> -->
+  
+<button onclick="foo()" type="button" class="btn btn-success">Send</button>
+<button onclick="del()"   type="button" class="btn btn-danger">delete all</button>
+  <ul id="ul"></ul>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    var getul = document.getElementById('ul')
+
+    function foo() {
+      a = document.getElementById('inp')
+      var li = document.createElement('li')
+      var liText = document.createTextNode(a.value)
+      li.appendChild(liText)
+      getul.appendChild(li)
+      a.value = ''
+
+      // Delete button
+      var deletbtn = document.createElement('button')
+      deletbtn.innerHTML = 'Delete'
+      deletbtn.classList.add('btn', 'btn-danger', 'delete-btn') // Bootstrap classes for delete button
+      deletbtn.setAttribute('onclick', 'del(this)')
+      li.appendChild(deletbtn)
+
+      // Edit button
+      var editbtn = document.createElement('button')
+      editbtn.innerHTML = 'Edit'
+      editbtn.classList.add('btn', 'btn-primary', 'edit-btn') // Bootstrap classes for edit button
+      editbtn.setAttribute('onclick', 'edit(this)')
+      li.appendChild(editbtn)
+
+      console.log(li)
+    }
+
+    
+  function del(e) {
+    if (e) {
+      e.parentNode.remove(); // Delete only the clicked item
+    } else {
+      var ul = document.getElementById('ul');
+      ul.innerHTML = ''; // Delete all items
+    }
+  }
+
+
+    function edit(e) {
+      var a = prompt('Enter edit value', e.parentNode.firstChild.nodeValue)
+      e.parentNode.firstChild.nodeValue = a
+    }
+  </script>
+</body>
+</html>
